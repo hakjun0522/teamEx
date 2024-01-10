@@ -77,7 +77,7 @@ def realtime_chart(request):
     chart_data = get_melon_chart()
     chart_data1 = get_bugs_chart()
     chart_data2 = get_flo_chart()
-    print( chart_data1)  # 이 부분을 추가하여 데이터 확인
+    # print(chart_data2)  # 이 부분을 추가하여 데이터 확인
     return render(request, 'single_pages/realtime_chart.html', {'chart_data': chart_data,'chart_data1': chart_data1,'chart_data2': chart_data2})
 
 def realtime_chart123(request):

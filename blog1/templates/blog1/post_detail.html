@@ -6,8 +6,20 @@
 {% endblock %}
 
 
-
 {% block main_area %}
+<style>
+.btn {
+    background-color: red;
+    color: white;
+}
+.modal {
+    color: black;
+}
+.card-body {
+    background:black;
+    color:white;
+}
+</style>
     <div id="post-area">
 
         {% if post.category %}
@@ -27,7 +39,7 @@
         <hr>
 
         {% if user.is_authenticated and user == post.author %}
-            <a class="btn btn-info btn-sm float-right" href="/blog1/update_post/{{ post.pk }}/" role="button">
+            <a class="btn btn-la float-right" href="/blog1/update_post/{{ post.pk }}/" role="button">
                 <i class="fas fa-pen"></i>  Edit Post</a>
         {% endif %}
 
@@ -83,14 +95,14 @@
         <!-- Comments Form -->
         <div class="card my-4">
             <h5 class="card-header bg-dark">Leave a Comment:</h5>
-            <div class="card-body bg-dark">
+            <div class="card-body">
                 {% if user.is_authenticated %}
                 <form id="comment-form" method="POST" action="{{ post.get_absolute_url }}new_comment/">
                     {% csrf_token %}
                     <div class="form-group">
                         {{ comment_form | crispy }}
                     </div>
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button type="submit" class="btn">Submit</button>
                 </form>
                 {% else %}
                     <a role="button" class="btn btn-outline-dark btn-block btn-sm" 
@@ -108,9 +120,9 @@
                         {% if user.is_authenticated and comment.author == user %}
                             <div class="float-right">
                                 <a role="button"
-                                   class="btn btn-sm btn-info"
+                                   class="btn btn-sm"
                                    id="comment-{{ comment.pk }}-update-btn"
-                                   href="/blog/update_comment/{{ comment.pk }}/">
+                                   href="/blog1/update_comment/{{ comment.pk }}/">
                                     edit
                                 </a>
                                 <a role="button"
@@ -136,7 +148,7 @@
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                                            <a role="button" class="btn btn-danger" href="/blog/delete_comment/{{ comment.pk }}/">Delete</a>
+                                            <a role="button" class="btn btn-danger" href="/blog1/delete_comment/{{ comment.pk }}/">Delete</a>
                                         </div>
                                     </div>
                                 </div>

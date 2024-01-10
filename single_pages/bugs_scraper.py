@@ -17,6 +17,7 @@ def get_bugs_chart():
 
     html = r.text
     soup = BeautifulSoup(html, "html.parser")
+    print(html)
     
     chart_data1 = []
 
@@ -33,8 +34,6 @@ def get_bugs_chart():
             "artist": artist,
             "album": album,
         })
-    
-    print(chart_data1)
     
     return chart_data1
 
